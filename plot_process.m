@@ -19,6 +19,10 @@ for di = range_z1:range_z2
         end
     end
 end
+% -- Mark the cutting position
+d(min_tool_z - range_z1 + 1, min_tool_x - range_x1 + 1) = 0;
+d(min_drill_z - range_z1 + 1, min_drill_z - range_z1 + 1) = 200;
+fprintf('------ Cutting positions:\nTool:%d, %d\nDrill%d, %d\n', min_tool_z - range_z1 + 1, min_tool_x - range_x1 + 1, min_drill_z - range_z1 + 1, min_drill_x - range_x1 + 1);
 % Save imagesc w/ popping out window, not a virus
 f = figure(st);
 imagesc(d)
