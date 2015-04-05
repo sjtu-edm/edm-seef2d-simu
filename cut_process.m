@@ -14,13 +14,14 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                 for px = 1:2
                     temp_z = i + dirr_z(pz);
                     temp_x = j + dirr_x(px);
-                    if (temp_z >= range_z1 && temp_z <= range_z2 && temp_x >= range_x1 && temp_x <= range_x2)
+                    if (temp_z >= range_z1 && temp_z < range_z2 && temp_x >= range_x1 && temp_x < range_x2)
                         if (comb(temp_z, temp_x) == 0 || comb(temp_z, temp_x) == 2)
                             % -- Change to one side electroding
                             if (j < be_x)
                                 continue;
                             end
                             % -- Change ends here
+                            % -- Left and top positions
                             hass1 = hass(i - range_z1, j - range_x1 + 1);
                             hass2 = hass(i - range_z1 + 1, j - range_x1);
                             hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
@@ -30,7 +31,21 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             temp_value1 = solv_x(hass1);
                             temp_value2 = solv_x(hass2);
                             temp_value3 = solv_x(hass3);
-                            temp_value = (temp_value3 - temp_value1)^2 + (temp_value3 - temp_value2)^2;
+                            temp_value = [temp_value1 - temp_value3, temp_value2 - temp_value3];
+
+                            % -- Right and bottom positions
+                            hass1 = hass(i - range_z1 + 2, j - range_x1 + 1);
+                            hass2 = hass(i - range_z1 + 1, j - range_x1 + 2);
+                            hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
+                            if (hass1 &&  hass2 &&  hass3)
+				temp_value1 = solv_x(hass1);
+				temp_value2 = solv_x(hass2);
+				temp_value3 = solv_x(hass3);
+                                temp_value = temp_value + [(temp_value3 - temp_value1), (temp_value3 - temp_value2)];
+                                temp_value = temp_value / 2;
+                            end
+                            
+                            temp_value = sum(temp_value.^2);
                             if (temp_value > max_eft)
                                 max_eft = temp_value;
                                 max_eft_set_num = 1;

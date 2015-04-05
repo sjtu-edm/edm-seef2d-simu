@@ -2,14 +2,14 @@ if (poss_right)
     can_right = 1;
     for i_t = 1:be_z
         i_d = be_z + 1 - i_t;
-        tem_c1 = ct(tool(i_t, :));
+        % tem_c1 = ct(tool(i_t, :));
         tem_c2 = ct(fliplr(tool(i_t, :)));
         if (tem_c2 >= tool_w)
             continue;
         end
-        tem1 = ct(drill(i_d, (be_x - tem_c1):min((be_x + tool_w), drill_l)));
+        % tem1 = ct(drill(i_d, (be_x - tem_c1):min((be_x + tool_w), drill_l)));
         tem2 = ct(drill(i_d, (be_x + tool_w - tem_c2):min((be_x + 2 * tool_w), drill_l)));
-        if ((tem1 < tool_x_v) || (tem2 < tool_x_v))
+        if (tem2 < tool_x_v)
             can_right = 0;
             break;
         end
