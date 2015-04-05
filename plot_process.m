@@ -14,7 +14,7 @@ hold off;
 d = zeros(range_z2 - range_z1 + 1, range_x2 - range_x1 + 1);
 for di = range_z1:range_z2
     for dj = range_x1:range_x2
-        if (hass(di - range_z1 + 1, dj - range_x1 + 1))
+        if ((hass(di - range_z1 + 1, dj - range_x1 + 1)) && (d(di - range_z1 + 1, dj - range_x1 + 1) == 0))
             d(di - range_z1 + 1, dj - range_x1 + 1) = solv_x(hass(di - range_z1 + 1, dj - range_x1 + 1));
         end
     end

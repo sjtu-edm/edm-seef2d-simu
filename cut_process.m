@@ -79,6 +79,8 @@ switch start_dir
         min_drill_z = start_z;
         min_drill_x = start_x;
 end
+d = zeros(range_z2 - range_z1 + 1, range_x2 - range_x1 + 1);
+
 while (1)
     max_grad = 0;
     max_grad_num = 0;
@@ -104,6 +106,7 @@ while (1)
             end
         end
     end
+    d(start_z - range_z1 + 1, start_x - range_x1 + 1) = 200;
     if (max_grad == 0)
         break;
     end
@@ -129,8 +132,6 @@ if (min_tool_x < be_x)
 end
 % -- End change
 min_now = (min_tool_z - min_drill_z)^2 + (min_tool_x - min_drill_x)^2;
-fprintf('------ Get minimum distance ... Positions:\n')
-fprintf('%d %d %d %d\n', min_tool_z, min_tool_x, min_drill_z, min_drill_x)
 if (min_now < ele_w^2)
     fprintf('------ Min distance legal to remove.\n')
     cut_remove;
