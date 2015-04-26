@@ -4,7 +4,7 @@ clc;
 set_parameters;
 init_process;
 %for st = 1:set_step
-for st = 1:1
+for st = 1:300
     if (mod(st, 10) == 0)
         st
     end

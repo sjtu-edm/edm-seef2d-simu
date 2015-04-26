@@ -26,7 +26,7 @@ drill_h = round(500 / unit_size);                   % height of drill
 % global drill_l;
 drill_l = round(2000 / unit_size);                  % constrainted by "tool_x_v"
 ele_w = round(9 / unit_size);                       % max width for electricity
-
+vol_thre = 200 / 9;                                 % add threshold voltage for electrode
 % With Wolframalpha, theta = 1.195
 % R = 4.4438
 % d = 3.6739

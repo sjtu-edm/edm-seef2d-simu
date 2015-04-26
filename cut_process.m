@@ -147,7 +147,7 @@ if (min_tool_x < be_x)
 end
 % -- End change
 min_now = (min_tool_z - min_drill_z)^2 + (min_tool_x - min_drill_x)^2;
-if (min_now < ele_w^2)
+if (max_eft >= vol_thre)
     fprintf('------ Min distance legal to remove.\n')
     cut_remove;
 else
