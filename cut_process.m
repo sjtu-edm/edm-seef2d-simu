@@ -22,7 +22,7 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             end
                             % -- Change ends here
                             % -- Left and top positions
-                            if (bound_jdg(i, j, range_z1 + 1, range_z2, range_x1 + 1, range_x2))
+                            if (bound_jdg(i, j, range_z1 + 1, range_z2, range_x1 + 1, range_x2) == 0)
                                 continue;
                             end
                             hass1 = hass(i - range_z1, j - range_x1 + 1);  % Top block
@@ -37,7 +37,7 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             temp_value = [temp_value3 - temp_value1, temp_value3 - temp_value2];
 
                             % -- Right and bottom positions
-                            if (bound_jdg(i, j, range_z1, range_z2 - 1, range_x1, range_x2 - 1))
+                            if (bound_jdg(i, j, range_z1, range_z2 - 1, range_x1, range_x2 - 1) == 0)
                                 continue;
                             end
                             hass1 = hass(i - range_z1 + 2, j - range_x1 + 1); % Bottom block
