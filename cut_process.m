@@ -14,7 +14,7 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                 for px = 1:2
                     temp_z = i + dirr_z(pz);
                     temp_x = j + dirr_x(px);
-                    if (temp_z >= range_z1 && temp_z < range_z2 && temp_x >= range_x1 && temp_x < range_x2)
+                    if (bound_jdg(temp_z, temp_x, range_z1, range_z2, range_x1, range_x2))
                         if (comb(temp_z, temp_x) == 0 || comb(temp_z, temp_x) == 2)
                             % -- Change to one side electroding
                             if (j < be_x)
@@ -22,6 +22,9 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             end
                             % -- Change ends here
                             % -- Left and top positions
+                            if (bound_jdg(i, j, range_z1 + 1, range_z2, range_x1 + 1, range_x2))
+                                continue;
+                            end
                             hass1 = hass(i - range_z1, j - range_x1 + 1);  % Top block
                             hass2 = hass(i - range_z1 + 1, j - range_x1);  % Left block
                             hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
@@ -34,6 +37,9 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             temp_value = [temp_value3 - temp_value1, temp_value3 - temp_value2];
 
                             % -- Right and bottom positions
+                            if (bound_jdg(i, j, range_z1, range_z2 - 1, range_x1, range_x2 - 1))
+                                continue;
+                            end
                             hass1 = hass(i - range_z1 + 2, j - range_x1 + 1); % Bottom block
                             hass2 = hass(i - range_z1 + 1, j - range_x1 + 2); % Right block
                             hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
