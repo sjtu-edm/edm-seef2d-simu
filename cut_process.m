@@ -22,8 +22,8 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             end
                             % -- Change ends here
                             % -- Left and top positions
-                            hass1 = hass(i - range_z1, j - range_x1 + 1);
-                            hass2 = hass(i - range_z1 + 1, j - range_x1);
+                            hass1 = hass(i - range_z1, j - range_x1 + 1);  % Top block
+                            hass2 = hass(i - range_z1 + 1, j - range_x1);  % Left block
                             hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
                             if (hass1 == 0 || hass2 == 0 || hass3 == 0)
                                 continue;
@@ -31,17 +31,17 @@ for i = (range_z1 + round(tool_h / 8)):range_z2
                             temp_value1 = solv_x(hass1);
                             temp_value2 = solv_x(hass2);
                             temp_value3 = solv_x(hass3);
-                            temp_value = [temp_value1 - temp_value3, temp_value2 - temp_value3];
+                            temp_value = [temp_value3 - temp_value1, temp_value3 - temp_value2];
 
                             % -- Right and bottom positions
-                            hass1 = hass(i - range_z1 + 2, j - range_x1 + 1);
-                            hass2 = hass(i - range_z1 + 1, j - range_x1 + 2);
+                            hass1 = hass(i - range_z1 + 2, j - range_x1 + 1); % Bottom block
+                            hass2 = hass(i - range_z1 + 1, j - range_x1 + 2); % Right block
                             hass3 = hass(i - range_z1 + 1, j - range_x1 + 1);
                             if (hass1 &&  hass2 &&  hass3)
 				temp_value1 = solv_x(hass1);
 				temp_value2 = solv_x(hass2);
 				temp_value3 = solv_x(hass3);
-                                temp_value = temp_value + [(temp_value3 - temp_value1), (temp_value3 - temp_value2)];
+                                temp_value = temp_value + [(temp_value1 - temp_value3), (temp_value2 - temp_value3)];
                                 temp_value = temp_value / 2;
                             end
                             
@@ -97,7 +97,7 @@ end
 d = zeros(range_z2 - range_z1 + 1, range_x2 - range_x1 + 1);
 
 while (1)
-    max_grad = 0;
+    max_grad = -1000;
     max_grad_num = 0;
     max_grad_cho = zeros(1, 8);
     for i = 1:8
@@ -122,7 +122,7 @@ while (1)
         end
     end
     d(start_z - range_z1 + 1, start_x - range_x1 + 1) = 200;
-    if (max_grad == 0)
+    if ((max_grad == -1000) || (comb(start_z, start_x) == (2 - start_dir)))
         break;
     end
     max_gradn = randi(max_grad_num);
@@ -148,9 +148,9 @@ end
 % -- End change
 min_now = (min_tool_z - min_drill_z)^2 + (min_tool_x - min_drill_x)^2;
 if (max_eft >= vol_thre)
-    fprintf('------ Min distance legal to remove.\n')
+    fprintf('------ Electric field beyond threshold, legal to remove.\n')
     cut_remove;
 else
-    fprintf('------ Min distance illegal to remove, skip...\n')
+    fprintf('------ Electric field lower than threshold, illegal to remove, skip...\n')
     poss_right = 1;
 end
