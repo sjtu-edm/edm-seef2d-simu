@@ -153,8 +153,9 @@ if (min_tool_x < be_x)
 end
 % -- End change
 min_now = (min_tool_z - min_drill_z)^2 + (min_tool_x - min_drill_x)^2;
-if (max_eft >= vol_thre)
+if (max_eft >= vol_thre^2)
     fprintf('------ Electric field beyond threshold, legal to remove.\n')
+    fprintf('------ Max voltage: %.2f / Threshold: %.2f\n', sqrt(max_eft), vol_thre)
     cut_remove;
 else
     fprintf('------ Electric field lower than threshold, illegal to remove, skip...\n')

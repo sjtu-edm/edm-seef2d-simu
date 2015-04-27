@@ -18,13 +18,13 @@ for di = range_z1:range_z2
         end
     end
 end
-d((round(tool_w/8) + 1):(range_z2 - range_z1 + 1), (round(tool_w/8) + 1):(range_x2 - range_x1 + 1)) = d((round(tool_w/8) + 1):(range_z2 - range_z1 + 1), (round(tool_w/8) + 1):(range_x2 - range_x1 + 1)) + 50; 
 % -- Mark the cutting position
-fprintf('------ Cutting positions:\nTool:%d, %d\nDrill%d, %d\n', min_tool_z - range_z1 + 1, min_tool_x - range_x1 + 1, min_drill_z - range_z1 + 1, min_drill_x - range_x1 + 1);
+fprintf('------ Cutting positions:\nTool:%d, %d\nDrill:%d, %d\n', min_tool_z - range_z1 + 1, min_tool_x - range_x1 + 1, min_drill_z - range_z1 + 1, min_drill_x - range_x1 + 1);
 % Save imagesc w/ popping out window, not a virus
 f = figure(st);
 imagesc(d)
 colorbar
+% SAVE PICS
 saveas(f, ['figure/Electric_field/', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
 close(f)
 % hold off;
