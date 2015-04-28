@@ -19,3 +19,4 @@ be_x = tool_w + 1;                                               % x-axis beginn
 % global be_z;
 be_z = init_d;                                          % z-axis beginning location on drill
 down_m = zeros(floor(drill_l * 2 / comp_x));
+force_count = 9;  % Counter of force-processing

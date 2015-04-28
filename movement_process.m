@@ -9,7 +9,7 @@ if (poss_right)
         end
         % tem1 = ct(drill(i_d, (be_x - tem_c1):min((be_x + tool_w), drill_l)));
         tem2 = ct(drill(i_d, (be_x + tool_w - tem_c2):min((be_x + 2 * tool_w), drill_l)));
-        if (tem2 < tool_x_v)
+        if (tem2 <= tool_x_v)
             can_right = 0;
             break;
         end
@@ -34,10 +34,13 @@ if (be_x >= comp_x)
             if (can_down)
                 break;
             end
+            force_count = force_count + 1;
             fprintf('------ Tool cannot go down, force processing...\n')
+            fprintf('------ Force processing number: %d\n', force_count)
             cut_process;
         end
         if (can_down)                    %  && (mod(st, comp_x) == 0)
+            force_count = 0;
             fprintf('------ Tool can go down, move down...\n')
             be_z = be_z + comp_ve;
             down_m(floor(be_x / comp_x)) = 1;
