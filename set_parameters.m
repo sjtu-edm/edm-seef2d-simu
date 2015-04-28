@@ -10,7 +10,7 @@
 % r - radius
 % ve - value
 
-set_step = 20000;                                    % step of simulations
+set_step = 2000;                                    % step of simulations
 unit_size = 1;                                    % size of one finite element
 % global tool_w;
 tool_w = round(100 / unit_size);                    % radius of tool = diameter / 2

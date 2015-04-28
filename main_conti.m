@@ -5,10 +5,10 @@ clear all;
 clc;
 % set_parameters;
 % init_process;
-fprnitf('--- Load data from last time...\n')
-load('data.mat')
+fprintf('--- Load data from last time...\n')
+% load('data.mat')
 fprintf('--- Load data from last time successfully!\n')
-start_step = 1;
+start_step = 193;
 fprintf('--- Now start simulation from step number %d\n\n', start_step)
 for st = start_step:set_step
     fprintf('--- Current Step Number: %d\n', st)

@@ -11,8 +11,8 @@ for st = 1:1000
     fprintf('--- %d: Cutting process finished, now movement process\n', st)
     movement_process;
     fprintf('--- %d: Movement process finished.\n', st)
-    if (mod(st, 50) == 0)
-        plot_process;
+    if (mod(st, 10) == 0)
+    plot_process;
     end
     fprintf('--- Step %d finished.\n\n', st)
 end
