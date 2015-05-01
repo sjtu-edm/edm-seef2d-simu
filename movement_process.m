@@ -36,10 +36,11 @@ if (be_x >= comp_x)
             end
             force_count = force_count + 1;
             fprintf('------ Tool cannot go down, force processing...\n')
-            fprintf('------ Force processing number: %d\n', force_count)
+            fprintf('------ Force processing number: %d\n(Current) Force processing number: %d\n', force_count_tot + 1, force_count)
             cut_process;
         end
         if (can_down)                    %  && (mod(st, comp_x) == 0)
+            force_count_tot = force_count_tot + 1;
             force_count = 0;
             fprintf('------ Tool can go down, move down...\n')
             be_z = be_z + comp_ve;

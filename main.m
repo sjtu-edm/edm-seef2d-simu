@@ -12,7 +12,10 @@ for st = 1:100
     movement_process;
     fprintf('--- %d: Movement process finished.\n', st)
     if (mod(st, 10) == 0)
-    plot_process;
+    	plot_process;
+    end
+    if ((mod(st, 100) == 0) && (st >= data_thresh))
+       data_saving; 
     end
     fprintf('--- Step %d finished.\n\n', st)
 end

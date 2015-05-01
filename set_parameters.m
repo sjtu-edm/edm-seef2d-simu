@@ -42,3 +42,6 @@ ele_range_d = round(test_p * 2.5 / unit_size);            % ##### radius for ele
 
 % comp_x = 24;                                        % compensation coornidates foe x-axis
 comp_ve = round(1 / unit_size);                     % compensation value for a distance of comp_x
+
+% ---- Saving data
+data_thresh = 1900;
