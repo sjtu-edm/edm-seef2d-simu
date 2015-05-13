@@ -5,21 +5,25 @@ clear all;
 clc;
 % set_parameters;
 % init_process;
-fprintf('--- Load data from last time...\n')
+load('data_100.mat');
+% -- parameter change
+tool_x_v = round(5 / unit_size);
 % load('data.mat')
-fprintf('--- Load data from last time successfully!\n')
-start_step = 193;
+start_step = 1960;
 fprintf('--- Now start simulation from step number %d\n\n', start_step)
-for st = start_step:set_step
+for st = start_step:4000
     fprintf('--- Current Step Number: %d\n', st)
     fprintf('--- %d: Now start cutting process\n', st)
     cut_process;
     fprintf('--- %d: Cutting process finished, now movement process\n', st)
     movement_process;
     fprintf('--- %d: Movement process finished.\n', st)
-    plot_process;
+    if (mod(st, 10) == 0)
+        plot_process;
+    end
+    if ((mod(st, 100) == 0) && (st >= data_thresh))
+	fprintf('--- Save workspace data to file for next running...\n')
+        data_saving;
+    end
     fprintf('--- Step %d finished.\n\n', st)
 end
-fprintf('--- Save workspace data to file for next running...\n')
-save('data.mat')
-fprintf('--- Save workspace data to file successfully!\n')
