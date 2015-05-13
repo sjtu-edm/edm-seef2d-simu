@@ -9,7 +9,7 @@ temp_a((be_z+1):(be_z+tool_h/2), (be_x - tool_w):(be_x+tool_w-1)) = flptl1 & tem
 % figure(2*st-1)
 % imshow(temp_a*255)
 % -- Print Tool Wear
-imwrite(temp_a*255, ['figure/Tool_wear/', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
+imwrite(temp_a*255, ['figure/Tool_wear/', 'force_down_', num2str(force_count_tot), '_', num2str(force_count), '_', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
 hold off;
 % -- Print Electric Field
 % figure(2*st)
@@ -28,7 +28,7 @@ f = figure(st);
 imagesc(d)
 colorbar
 % SAVE PICS
-saveas(f, ['figure/Electric_field/', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
+saveas(f, ['figure/Electric_field/', 'force_down_', num2str(force_count_tot), '_', num2str(force_count), '_', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
 close(f)
 % hold off;
 
@@ -44,16 +44,8 @@ f1 = figure(st - 1);
 imagesc(d1)
 colorbar
 % SAVE PICS
-saveas(f1, ['figure/Scanning_area/', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
+saveas(f1, ['figure/Scanning_area/', 'force_down_', num2str(force_count_tot), '_', num2str(force_count), '_', num2str(be_x), '_', num2str(be_z), '_', num2str(st), '.bmp'], 'bmp')
 close(f1)
 
 
 % imwrite(temp_a*255, ['figure/', num2str(be_x), '_', num2str(be_z), '.bmp'], 'bmp')
-%{
-figure(1)
-imshow(flipud(tool)*255)
-hold off;
-figure(2)
-imshow(drill(1:drill_h, 1:drill_l)*255)
-hold off;
-%}

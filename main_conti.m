@@ -8,6 +8,12 @@ clc;
 load('data_100.mat');
 % -- parameter change
 tool_x_v = round(5 / unit_size);
+% -- parameter change end
+% make new folders 
+mkdir('figure', 'Electric_Field')
+mkdir('figure', 'Tool_wear')
+mkdir('figure', 'Scanning_area')
+
 % load('data.mat')
 start_step = 1960;
 fprintf('--- Now start simulation from step number %d\n\n', start_step)

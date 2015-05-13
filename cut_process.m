@@ -7,13 +7,13 @@ max_eft = -1;
 max_eft_set = zeros(2, 1000);
 max_eft_set_num = 0;
 d = zeros(range_z2 - range_z1 + 1, range_x2 - range_x1 + 1);
-
 for i = (range_z1 + round(tool_h/16)):range_z2
     for j = (range_x1 + round(tool_w/8)):range_x2
         if (comb(i, j) == 1)
             if (j < be_x)
                 continue;
             end
+            
             % -- Left and top positions
             if (bound_jdg(i, j, range_z1 + 1, range_z2, range_x1 + 1, range_x2) == 0)
                 continue;
@@ -24,12 +24,13 @@ for i = (range_z1 + round(tool_h/16)):range_z2
             if (hass1 == 0 || hass2 == 0 || hass3 == 0)
                 continue;
             end
+           
             % d(i - range_z1 + 1, j - range_x1 + 1) = 100;
 	    temp_value1 = solv_x(hass1);
 	    temp_value2 = solv_x(hass2);
 	    temp_value3 = solv_x(hass3);
 	    temp_value = [temp_value3 - temp_value1, temp_value3 - temp_value2];
-            
+             
             % -- Right and bottom positions
 	    if (bound_jdg(i, j, range_z1, range_z2 - 1, range_x1, range_x2 - 1))
 	    hass1 = hass(i - range_z1 + 2, j - range_x1 + 1); % Bottom block
@@ -41,7 +42,7 @@ for i = (range_z1 + round(tool_h/16)):range_z2
 		temp_value3 = solv_x(hass3);
 		temp_value = temp_value + [(temp_value1 - temp_value3), (temp_value2 - temp_value3)];
 		temp_value = temp_value / 2;
-        end
+            end
         end
 	    temp_value = sum(temp_value.^2);
             if (temp_value > max_eft)
