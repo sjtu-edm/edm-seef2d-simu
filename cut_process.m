@@ -7,8 +7,14 @@ max_eft = -1;
 max_eft_set = zeros(2, 1000);
 max_eft_set_num = 0;
 d = zeros(range_z2 - range_z1 + 1, range_x2 - range_x1 + 1);
-for i = (range_z1 + round(tool_h/16)):range_z2
-    for j = (range_x1 + round(tool_w/8)):range_x2
+% -- define the starting range points
+first_drill_pos = find(comb(range_z1:range_z2, range_x2) == 2);
+first_drill_pos = first_drill_pos(1);
+range_z1_s = round(first_drill_pos / 2);
+range_x1_s = range_x1 + round(tool_w/8);
+% -- end of definition
+for i = range_z1_s:range_z2
+    for j = range_x1_s:range_x2
         if (comb(i, j) == 1)
             if (j < be_x)
                 continue;

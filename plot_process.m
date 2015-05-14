@@ -34,8 +34,8 @@ close(f)
 
 % -- Print Scanning Area
 d1 = d;
-for di = (range_z1 + round(tool_h/16)):range_z2
-    for dj = (range_x1 + round(tool_w/8)):range_x2
+for di = range_z1_s:range_z2
+    for dj = range_x1_s:range_x2
         d1(di - range_z1 + 1, dj - range_x1 + 1) = d1(di - range_z1 + 1, dj - range_x1 + 1) + 100;
     end
 end

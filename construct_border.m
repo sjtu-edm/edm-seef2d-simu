@@ -12,7 +12,7 @@ center_x = be_x;
 center_z = be_z - ct(tool(:, 1)') + tool_h / 2;
 range_x1 = max(1, center_x - tool_w*2);
 range_x2 = min(drill_l, center_x + tool_w*2);
-range_z1 = max(1, center_z - tool_h/4);
+range_z1 = max(1, center_z - round(tool_h/3));
 range_z2 = min(drill_h + tool_h/2, center_z + tool_h/2);
 
 % imshow(comb(range_z1:range_z2, range_x1:range_x2)*255)
