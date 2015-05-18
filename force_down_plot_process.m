@@ -33,12 +33,7 @@ close(f)
 % hold off;
 
 % -- Print Scanning Area
-d1 = d;
-for di = range_z1_s:range_z2
-    for dj = range_x1_s:range_x2
-        d1(di - range_z1 + 1, dj - range_x1 + 1) = d1(di - range_z1 + 1, dj - range_x1 + 1) + 100;
-    end
-end
+d1 = d((range_z1_s:range_z2) - range_z1 + 1, (range_x1_s:range_x2) - range_x1 + 1);
 
 f1 = figure(st - 1);
 imagesc(d1)

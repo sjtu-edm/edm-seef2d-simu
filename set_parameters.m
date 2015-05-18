@@ -15,7 +15,7 @@ unit_size = 1;                                    % size of one finite element
 % global tool_w;
 tool_w = round(100 / unit_size);                    % radius of tool = diameter / 2
 % global tool_h;
-tool_h = round(400 / unit_size);                    % height of tool
+tool_h = round(800 / unit_size);                    % height of tool
 tool_x_v = round(7 / unit_size);                    % x-axis velocity of tool
 % init_d = round(80 / unit_size);                     % initial depth of tool in drill  //  original 80
 Hw = round(43.5 / unit_size);
